@@ -4,6 +4,8 @@ import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import CheckStatus from './CheckStatus'
+import './style.scss'
+
 let backendHost
 if (process.env.NODE_ENV == 'development') {
   backendHost = 'http://localhost:5000/graphql'
