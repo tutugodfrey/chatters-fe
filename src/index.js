@@ -4,7 +4,7 @@ import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
 import Routes from './routes/Routes.jsx'
-import './style.scss'
+import './css/style.scss'
 
 let backendHost
 if (process.env.NODE_ENV == 'development') {

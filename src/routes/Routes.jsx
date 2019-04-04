@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Signup from '../components/Signup.jsx'
 import Signin from '../components/Signin.jsx'
-import Home from '../components/Home'
+import Home from '../components/Home.jsx'
 import Messages from '../components/Messages.jsx'
 import Chats from '../components/Chats.jsx'
 

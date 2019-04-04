@@ -18,16 +18,17 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         exclude: /ndoe_modules/,
-        use: [
-          require.resolve('style-loader'),
-          {
-            loader: require.resolve('css-loader')
-        
-          },
-          {
-            loader: require.resolve('sass-loader')
+        use: ['style-loader', 'css-loader?url=false', 'sass-loader']
+      },
+      {
+        test: /\.(jpg|jpeg)$/,
+        exclude: /ndoe_modules/,
+        use: {
+          loader:'url-loader',
+          options: {
+            limit: 9000
           }
-        ]
+        }
       }
     ]
   },

@@ -26,31 +26,69 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h3>Sign Up</h3>
-        </div>
-        <div>
-          <form>
-            <div>
-              <input type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.handleChange.bind(this)} />
-            </div>
-            <div>
-              <input type='text' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange.bind(this)} />
-            </div>
-            <div>
-              <input type='text' name='email' placeholder='you@domain.com' value={this.state.email} onChange={this.handleChange.bind(this)} />
-            </div>
-            <div>
-              <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleChange.bind(this)} />
-            </div>
-            <div>
-              <input type='button' name='signup-btn' value='Submit' onClick={this.handleSubmit.bind(this)} />
-            </div>
-          </form>
-        </div>
-        <div>
-          <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
+      <div className="container" id="signup-page">
+        <div id="abc">
+          <div>
+            <h3>Sign Up</h3>
+          </div>
+          <div id="signup-form">
+            <form>
+              <div className="form-group">
+                <label>Name</label>
+                <input
+                  type='text'
+                  name='name'
+                  className="form-control"
+                  placeholder='Name'
+                  value={this.state.name}
+                  onChange={this.handleChange.bind(this)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Username</label>
+                <input
+                  type='text'
+                  name='username'
+                  className="form-control"
+                  placeholder='Username'
+                  value={this.state.username}
+                  onChange={this.handleChange.bind(this)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input type='text'
+                  name='email'
+                  className="form-control"
+                  placeholder='you@domain.com'
+                  value={this.state.email}
+                  onChange={this.handleChange.bind(this)}
+                />
+              </div>
+              <div className="form-group">
+                <label>Password</label> 
+                <input
+                  type='password'
+                  name='password'
+                  className="form-control"
+                  placeholder='password'
+                  value={this.state.password}
+                  onChange={this.handleChange.bind(this)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type='button'
+                  name='signup-btn'
+                  value='Submit'
+                  onClick={this.handleSubmit.bind(this)}
+                />
+              </div>
+            </form>
+          </div>
+          <div>
+            <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
+          </div>
         </div>
       </div>
     )
