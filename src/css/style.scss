@@ -1,0 +1,211 @@
+@import 'variables';
+@import 'mixins';
+
+body {
+  color: rgb(85, 81, 81);
+  margin: 0;
+}
+.primary {
+  color: $primaryColor
+}
+
+.secondary {
+  color: $secondaryColor
+}
+
+.bg-primary {
+  background-color: $primaryColor
+}
+
+.bg-secondary {
+  background-color: $secondaryColor
+}
+
+.container {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+.bg-overlay {
+  background: rgba(34, 33, 33, 0.479);
+  position: absolute;
+  top: 1px;
+  height: 100%;
+  width: 100%
+}
+
+.link {
+  @include borderRadius($borderRadius);
+  text-decoration: none;
+  color: $white;
+  background-color: $secondaryColor;
+  padding: 3px 5px;
+  font-size: $mediumText;
+}
+
+#nav-bar {
+  display: grid;
+  direction: column;
+  grid-template-columns: 10% 10%;
+  align-items: end;
+  justify-content: end;
+  height: 40px;
+  position: relative;
+  top: 2px;
+  visibility: hidden;
+}
+
+.nav-item > .link {
+  position: relative;
+  right: 1%;
+}
+
+#nav-bar2 {
+
+}
+
+#login1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  border: none;
+  padding: 2px 5px;
+}
+.form-group {
+  margin: 7px;
+  padding: 10px;
+  label {
+    margin-right: 4px;
+    width: 30%;
+  }
+  input {
+    width: 60%;
+    position: relative;
+    left: 1%;
+  }
+}
+#collapse-btn {
+  background: transparent;
+  position: relative;
+  visibility: visible;
+  border: none;
+  left: 100%;
+  top:-20px;
+  width: 22px;
+  .marker {
+    position: relative;
+    top: -3px;
+    left: -2px;
+    hr {
+      width: 18px;
+    }
+  }
+}
+
+.form-control {
+  @include borderRadius($borderRadius);
+  border: none;
+  margin-right: 3px;
+  font-size: $smallText;
+}
+
+.btn-sm {
+  @include borderRadius($borderRadius);
+  margin-right: 3px;
+  text-align: center;
+  font-size: $mediumText;
+  color: $white;
+}
+
+
+div#showcase {
+  background-image: url('/alone-audio-blur-1645633.jpg');
+  background-repeat:no-repeat;
+	background-size:cover;
+	background-position: center;
+  line-height: 20px;
+  position: relative;
+  top: 1px;
+  min-height: 100vh;
+}
+#caption {
+  position: relative;
+  top: 20%;
+  font-size: 2em;
+  color: $white;
+}
+#caption > p {
+  line-height: 30px;
+}
+div.show {
+  visibility: visible;
+}
+
+div.hide {
+  visibility: hidden;
+}
+
+.show-nav-menu {
+  background-color: $secondaryColor;
+  display:grid;
+  direction: column;
+  grid-template-columns:100%;
+  align-content: center;
+  justify-content: center;
+  > div {
+    height: 40px;
+    width: 100%;
+    border-bottom: 2px solid $white;
+    a {
+      text-decoration: none;
+      text-align: center;
+      display: block;
+      color:$white;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 5px 0;
+    }
+  }
+}
+
+#login1-form-container {
+  position: relative;
+  top: 40%;
+  display: none;
+}
+#context {
+  background-color: $primaryColor;
+  height: 350px;
+}
+
+/* Define media break points */
+@media only screen and (min-width:620px) {
+  .link {
+    font-size: $smallText;
+  }
+  .form-control {
+    font-size: $smallText;
+  }
+  .btn-sm {
+    font-size: $smallText;
+  }
+  #login1-form-container {
+    display: block;
+  }
+  #nav-bar {
+    visibility: visible;
+  }
+  #nav-bar2 { 
+    visibility: hidden;
+  }
+  #collapse-btn {
+    visibility: hidden;
+  }
+}
