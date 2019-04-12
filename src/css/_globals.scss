@@ -1,0 +1,35 @@
+
+/* colors */
+.primary {
+  color: $primaryColor
+}
+
+.secondary {
+  color: $secondaryColor
+}
+
+.bg-primary {
+  background-color: $primaryColor
+}
+
+.bg-secondary {
+  background-color: $secondaryColor
+}
+
+/* divs */
+.container {
+  width: 100%;
+}
+
+div.show {
+  visibility: visible;
+}
+
+div.hide {
+  visibility: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
