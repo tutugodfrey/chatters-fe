@@ -27,7 +27,10 @@ class Signup extends Component {
   render() {
     return (
       <div className="container" id="signup-page">
-        <div id="abc">
+        <div className="go-back-home">
+          <Link to="/">Back</Link>
+        </div>
+        <div className="form-container">
           <div>
             <h3>Sign Up</h3>
           </div>
