@@ -6,10 +6,8 @@ import { ApolloProvider } from 'react-apollo'
 import Routes from './routes/Routes.jsx'
 import './css/style.scss'
 
-let backendHost
-if (process.env.NODE_ENV == 'development') {
-  backendHost = 'http://localhost:5000/graphql'
-}
+let backendHost = 'http://localhost:5000/graphql'
+
 const client = new ApolloClient({
   uri: backendHost
 })

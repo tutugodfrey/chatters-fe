@@ -1,101 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import gql from 'graphql-tag'
+import SignUpForm from './SignUpForm.jsx';
 
-class Signup extends Component {
-  constructor () {
-    super()
-    this.state = {
-      name: '',
-      username: '',
-      email: '',
-      password: ''
+
+const SIGN_UP = gql`
+  mutation SignUp($name: String!, $email: String!, $username: String!, $password: String!) {
+    signUp(name: $name, email: $email, username: $username, password: $password) {
+      name,
+      email,
+      username,
+      token,
     }
   }
+`;
 
-  handleChange (event) {
-    const { name, value } = event.target
-    this.setState({
-      ...this.state,
-      [name]: value
-    })
-  }
-
-  handleSubmit(event) {
-    console.log(this.state)
-  }
-
+class SignUp extends Component {
   render() {
     return (
       <div className="container" id="signup-page">
         <div className="go-back-home">
           <Link to="/">Back</Link>
         </div>
-        <div className="form-container">
-          <div>
-            <h3>Sign Up</h3>
-          </div>
-          <div id="signup-form">
-            <form>
-              <div className="form-group">
-                <label>Name</label>
-                <input
-                  type='text'
-                  name='name'
-                  className="form-control"
-                  placeholder='Name'
-                  value={this.state.name}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Username</label>
-                <input
-                  type='text'
-                  name='username'
-                  className="form-control"
-                  placeholder='Username'
-                  value={this.state.username}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Email</label>
-                <input type='text'
-                  name='email'
-                  className="form-control"
-                  placeholder='you@domain.com'
-                  value={this.state.email}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Password</label> 
-                <input
-                  type='password'
-                  name='password'
-                  className="form-control"
-                  placeholder='password'
-                  value={this.state.password}
-                  onChange={this.handleChange.bind(this)}
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type='button'
-                  name='signup-btn'
-                  value='Submit'
-                  onClick={this.handleSubmit.bind(this)}
-                />
-              </div>
-            </form>
-          </div>
-          <div>
-            <p>Already have an account? <Link to='/signin'>Sign In</Link></p>
-          </div>
-        </div>
+        <SignUpForm signup={ SIGN_UP }/>
       </div>
     )
   }
-}
+};
 
-export default Signup
+export default SignUp;
