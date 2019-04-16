@@ -10,7 +10,6 @@ const checkStatus = gql`
 class Home extends Component {
   renderLinkButton() {
     const button = document.getElementById('collapse-btn')
-    console.log(button)
     button.addEventListener('click', () => {
       const navBar = document.getElementById('nav-bar2')
       const classname = navBar.getAttribute('class')
