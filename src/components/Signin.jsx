@@ -1,6 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Mutation } from 'react-apollo'
+import gql from 'graphql-tag'
+import SignInForm from './SignInForm.jsx'
 
+const SIGN_IN = gql`
+  mutation signIn($email: String!, $password: String!){
+    signIn(email: $email, password: $password) {
+      name,
+      email,
+      username,
+      token,
+      isAdmin
+    }
+  }
+`
 class Signin extends Component {
   render() {
     return (
@@ -8,43 +22,7 @@ class Signin extends Component {
         <div className="go-back-home">
           <Link to="/">Back</Link>
         </div>
-        <div className="form-container">
-          <div>
-            <h3>Sign In</h3>
-          </div>
-          <div id="signin-form">
-            <form>
-              <div className="form-group">
-                <label>username</label>
-                <input
-                  type='text'
-                  name='username'
-                  className="form-control"
-                  placeholder='username'
-                />
-              </div>
-              <div className="form-group">
-                <label>password</label>
-                <input
-                  type='password'
-                  name='password'
-                  className="form-control"
-                  placeholder='password'
-                />
-              </div>
-              <div className="form-group">
-                <input
-                  type='button'
-                  name='signin-btn'
-                  value='Sign In'
-                />
-              </div>
-            </form>
-            <div>
-              <p>Don't have an account? <Link to='/signup'>Sign up here</Link></p>
-            </div>
-          </div>
-        </div>
+        <SignInForm signIn={ SIGN_IN } />
       </div>
     )
   }
