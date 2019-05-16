@@ -1,0 +1,35 @@
+@import 'variables';
+
+#dashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100Vh;
+  #chats {
+    flex: 2 0 100px;
+  }
+  #chat-box{
+    flex: 5 0 100px;
+    border:2px solid $secondaryColor;
+    border-radius: 5px;
+  }
+  #start-chat {
+    flex: 2 0 100px;
+  }
+}
+
+.box-header {
+  background-color: $secondaryColor;
+  padding:2px;
+  text-align: center;
+  position: relative;
+  top: 0px;
+  width: 100%;
+}
+
+.users {
+  display: flex;
+
+  .user-name {
+  }
+}
