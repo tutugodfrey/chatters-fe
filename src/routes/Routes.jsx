@@ -5,6 +5,8 @@ import Signin from '../components/Signin.jsx'
 import Home from '../components/Home.jsx'
 import Messages from '../components/Messages.jsx'
 import Chats from '../components/Chats.jsx'
+import Dashboard from '../components/Dashboard.jsx'
+import ChatBox from '../components/ChatBox.jsx'
 
 export default () => {
   return (
@@ -16,6 +18,8 @@ export default () => {
           <Route path='/signin' exact component={Signin}/>
           <Route path='/messages' exact component={Messages}/>
           <Route path='/chats' exact component={Chats} />
+          <Route path='/dashboard' exact component={Dashboard} />
+          {/* <Route path='/active/:id' component={ChatBox} /> */}
         </Switch>
       </BrowserRouter>
     </div>
