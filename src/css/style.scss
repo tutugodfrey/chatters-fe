@@ -2,6 +2,7 @@
 @import 'mixins';
 @import 'signup';
 @import 'dashboard';
+@import 'logout';
 @import 'globals';
 
 body {
@@ -167,6 +168,11 @@ div#showcase {
 #context {
   background-color: $primaryColor;
   height: 350px;
+}
+
+#dashboard-header {
+  height: 40px;
+  background-color: black;
 }
 
 /* Define media break points */
