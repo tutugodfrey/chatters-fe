@@ -5,6 +5,7 @@ export const typeDefs = gql`
     isLoggedIn: Boolean!
     user: User
     activeChat: String
+    logOut: Boolean
   }
 
   type User {

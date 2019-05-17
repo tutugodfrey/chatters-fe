@@ -9,7 +9,7 @@ const SignInForm = (props) => {
 
   return (
     <Mutation mutation={signIn}>
-      {(signIn, props) => {
+      { (signIn, props) => {
         const { error, loading, data } = props
         if (error) {
           return (
