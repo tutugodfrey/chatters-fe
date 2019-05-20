@@ -5,7 +5,7 @@ class ChatBox extends Component {
     return (
       <div>
         <div className="box-header">
-          <h3>Active Active</h3>
+          <h3>Active Chats</h3>
         </div> 
       </div>
     )

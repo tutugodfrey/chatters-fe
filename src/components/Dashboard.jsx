@@ -21,26 +21,24 @@ class Dashboard extends Component {
           {(props)  => {
             const { data } = props;
             if (data.isLoggedIn === false) return <Redirect to="/signin" />
-            // if (data.isLoggedIn) {
-              return (
-                <div>
-                  <div id={'dashboard-header'}>
-                    <Logout />
+            return (
+              <div>
+                <div id={'dashboard-header'}>
+                  <Logout />
+                </div>
+                <div id="dashboard">
+                  <div className="p-x" id='chats'>
+                    <Chats />
                   </div>
-                  <div id="dashboard">
-                    <div className="p-x" id='chats'>
-                      <Chats />
-                    </div>
-                    <div className="p-x" id="chat-box">
-                      <ChatBox />
-                    </div>
-                    <div className="p-x" id="start-chat">
-                      <PeopleComp />
-                    </div>
+                  <div className="p-x" id="chat-box">
+                    <ChatBox />
+                  </div>
+                  <div className="p-x" id="start-chat">
+                    <PeopleComp />
                   </div>
                 </div>
-              )
-            // }
+              </div>
+            )
           }}
         </Query>
       </div>
