@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "npm run start:webpack && npm run start:dev",
+    "serve2": "npm run start:dev && npm run start:webpack",
     "start:dev": "webpack-dev-server --mode development",
     "start:webpack": "webpack --mode production -w",
     "start:server": "nodemon -r esm server/index",

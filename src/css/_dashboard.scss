@@ -1,10 +1,11 @@
 @import 'variables';
 
 #dashboard {
+  --navbarHeight: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100Vh;
+  height: calc(100Vh - var(--navbarHeight));
   #chats {
     flex: 2 0 100px;
   }
@@ -21,6 +22,8 @@
 .box-header {
   background-color: $secondaryColor;
   padding:2px;
+  padding-bottom: 4px;
+  height: 35px;
   text-align: center;
   position: relative;
   top: 0px;

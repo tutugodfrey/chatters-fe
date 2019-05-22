@@ -28,7 +28,29 @@ export const resolvers = {
     },
     user: (_, args, { cache }) => {
       console.log(cache, 'AAAAACACHE')
+    },
+    activeChat(root, args, context, info) {
+      const activeChat = context.cache.readQuery({ query: ACTIVE_CHAT })
+      return activeChat
+    }
+  },
+  Mutation: {
+    activeChat: (root, variables, {cache, getCacheKey }, info) => {
+      const { id } = variables
+      const chatId = getCacheKey({ __typename: 'Chat', id })
+      const fragment = gql`
+        fragment Chat on Chat {
+          id,
+          title,
+          messages {
+            id,
+            body,
+            createdAt
+          }
+        }
+      `
+      const chat = cache.readFragment({ fragment, id: chatId })
+      return cache.writeData({ data: { activeChat: chat }})
     }
   }
 }
-

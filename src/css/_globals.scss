@@ -15,6 +15,9 @@
 .bg-secondary {
   background-color: $secondaryColor
 }
+.bg-success {
+  background: #30a121
+}
 
 .text-white {
   color: #ffffff;
@@ -45,5 +48,9 @@ div.hide {
 
 .display-inline {
   display: inline;
+}
+
+.b-radius {
+  border-radius: 5px;
 }
 
