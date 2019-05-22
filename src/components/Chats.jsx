@@ -1,19 +1,29 @@
 import React, { Component } from 'react'
-import { Query } from 'react-apollo'
+import { Query, Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 const GET_CHATS = gql`
   query chats {
     chats {
       id,
       title,
+      messages {
+        id,
+        body,
+        createdAt
+      }
       users {
         id,
         email,
         username,
       }
     }
+  }
+`
+const ACTIVE_CHAT = gql`
+  mutation ActiveChat($id: ID) {
+    activeChat(id: $id) @client
   }
 `
 class Chats extends Component {
@@ -40,9 +50,15 @@ class Chats extends Component {
             const { chats } = data
             renderChat = chats.map((chat, b)=> {
               return (
-                <div class="chats-div">
-                  <button className="chat-btn" key={chat.id} id={chat.id} onClick={() => console.log('chat click')}>{chat.title}</button>
-                </div>
+                <Mutation mutation={ACTIVE_CHAT} variables={{ id: chat.id }}>
+                  { activeChat => {
+                    return (
+                      <div class="chats-div">
+                        <Link className="chat-btn" key={chat.id} id={chat.id} onClick={activeChat}>{chat.title}</Link>
+                      </div>
+                    )
+                  }}
+                </Mutation>
               )
             })
           }

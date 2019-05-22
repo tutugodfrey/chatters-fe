@@ -32,6 +32,7 @@ const client = new ApolloClient({
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem('token'),
+    activeChat: { name: 'godfrey'}
   }
 })
 

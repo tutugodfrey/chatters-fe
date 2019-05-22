@@ -1,9 +1,11 @@
 @import 'variables';
+@import 'globals';
 @import 'mixins';
 @import 'signup';
 @import 'dashboard';
 @import 'logout';
-@import 'globals';
+@import 'chatform';
+
 
 body {
   color: rgb(85, 81, 81);
@@ -171,7 +173,7 @@ div#showcase {
 }
 
 #dashboard-header {
-  height: 40px;
+  height: $navbarHeight;
   background-color: black;
 }
 
