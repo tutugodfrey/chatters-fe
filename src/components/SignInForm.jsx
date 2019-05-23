@@ -18,12 +18,12 @@ const SignInForm = (props) => {
             </div>
           )
         } else if (data) {
-          const { name, email, token } = data.signIn
+          const { token } = data.signIn
           localStorage.setItem('token', token);
           const { cache } = props.client;
 
           // save user data to local cache
-          cache.writeData({ data })
+          cache.writeData({ data: { user: data.signIn} })
           return <Redirect to="/dashboard"/>
         } else {
           return (

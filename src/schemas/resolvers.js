@@ -23,11 +23,8 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    isLoggedIn() {
+    isLoggedIn: () => {
       return !!localStorage.getItem('token');
-    },
-    user: (_, args, { cache }) => {
-      console.log(cache, 'AAAAACACHE')
     },
     activeChat(root, args, context, info) {
       const activeChat = context.cache.readQuery({ query: ACTIVE_CHAT })
@@ -51,6 +48,6 @@ export const resolvers = {
       `
       const chat = cache.readFragment({ fragment, id: chatId })
       return cache.writeData({ data: { activeChat: chat }})
-    }
+    },
   }
 }

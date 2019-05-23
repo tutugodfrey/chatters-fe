@@ -1,0 +1,114 @@
+#profile-comp, #update-profile-component {
+  align-items: center;
+  width: 80%;
+  position: relative;
+  left: 10%;
+  top: 100px;
+  padding: 20px 10px;
+  box-shadow: 2px 5px 5px 2px rgb(223, 220, 220);
+  justify-content: center;
+}
+
+#profile-comp {
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#profile-header {
+  border-bottom: 2px solid rgb(17, 161, 228);
+  height: 50px;
+  padding-top: 50px;
+  margin-bottom: 10px;
+}
+
+#profile-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#profile-info {
+  --padding: 30px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - var(--padding) * 2);
+  padding: var(--padding);
+}
+.profile-group {
+  width: 40%;
+  label {
+    font-weight: Bold;
+  };
+  p {
+    background-color: rgb(245, 237, 237);
+    height: 45px;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+}
+
+#profile-image {
+  padding: 20px;
+}
+
+#edit-profile-div {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content:center;
+}
+
+#edit-profile-link {
+  background-color: rgb(17, 161, 228);
+  display: block;
+  width: 40%;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  padding-top: 10px;
+  align-self: center;
+  color: #fff;
+}
+
+#update-profile-component {
+  #update-profile-form-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // .input-group {
+    //   background-color: rgb(245, 237, 237);
+    //   width: 100%;
+    //   height: 40px;
+    // }
+    .form-group {
+      margin: 5px 0;
+      width: 100%;
+      label {
+        font-weight: bold;
+        width: 40%;
+      }
+      input {
+        border: 1px solid rgb(17, 161, 228);
+        border-radius: 5px;
+        width: 60%;
+        height: 40px;
+        font-size: 15px;
+      };
+      input[type=submit] {
+        width: 100%;
+        position: relative;
+        left: 0px;
+        border: none;
+      }
+    }
+  }
+}
+

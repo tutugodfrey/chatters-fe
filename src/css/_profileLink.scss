@@ -1,0 +1,15 @@
+@import 'variables';
+
+#profile-link-div a {
+  background-color:black;
+  border: 1px solid white;
+  border-radius: 5%;
+  padding: 4px 4px;
+  position: absolute;
+  right: 10%;
+  top: 5px;
+  font-size: smaller;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}

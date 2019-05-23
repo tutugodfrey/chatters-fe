@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import  { ApolloClient,  ApolloLink, InMemoryCache, HttpLink } from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import { persistCache } from 'apollo-cache-persist'
 
 import Routes from './routes/Routes.jsx'
 import { typeDefs, resolvers } from './schemas/resolvers.js'
@@ -22,18 +23,19 @@ const authLink = new ApolloLink((operation, forward) => {
   })
   return forward(operation)
 })
+
+cache.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem('token'),
+    activeChat: { name: ''}
+  }
+})
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache,
   typeDefs,
   resolvers,
-})
-
-cache.writeData({
-  data: {
-    isLoggedIn: !!localStorage.getItem('token'),
-    activeChat: { name: 'godfrey'}
-  }
 })
 
 const App = () => {
@@ -44,4 +46,13 @@ const App = () => {
     )
 }
 
-ReactDom.render(<App />, document.getElementById('app'))
+const setupAndRender = async () => {
+  persistCache({
+    cache,
+    storage: window.localStorage
+  })
+  ReactDom.render(<App />, document.getElementById('app'))
+}
+
+setupAndRender()
+

@@ -2,7 +2,8 @@
 @import 'mixins';
 
 #signup-page, #signin-page {
-  @include gradient;
+  background: #c9c4c491;
+  // @include gradient;
   display: grid;
   direction: column;
   grid-template-columns: 40%;
@@ -10,7 +11,7 @@
   justify-content: center;
   align-content:center;
   div.form-container {
-    background-color: $primaryColor;
+    // background-color: $primaryColor;
     position: relative;
     top: 1%;
     @include borderRadius($borderRadius);

@@ -49,6 +49,12 @@ div.hide {
 .display-inline {
   display: inline;
 }
+div.hidden {
+  display: none;
+}
+div.reveal {
+  display: block;
+}
 
 .b-radius {
   border-radius: 5px;

@@ -7,10 +7,11 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { Redirect } from 'react-router-dom'
 import Logout from './logout.jsx'
+import ProfileLink from './profileLink.jsx'
 
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
-    isLoggedIn @client(always: true)
+    isLoggedIn @client
   }
 `
 class Dashboard extends Component {
@@ -24,6 +25,7 @@ class Dashboard extends Component {
             return (
               <div>
                 <div id={'dashboard-header'}>
+                  <ProfileLink />
                   <Logout />
                 </div>
                 <div id="dashboard">

@@ -6,6 +6,7 @@ import Home from '../components/Home.jsx'
 import Messages from '../components/Messages.jsx'
 import Chats from '../components/Chats.jsx'
 import Dashboard from '../components/Dashboard.jsx'
+import Profile from '../components/profile.jsx'
 import ChatBox from '../components/ChatBox.jsx'
 
 export default () => {
@@ -19,6 +20,7 @@ export default () => {
           <Route path='/messages' exact component={Messages}/>
           <Route path='/chats' exact component={Chats} />
           <Route path='/dashboard' exact component={Dashboard} />
+          <Route path='/profile' exact component={Profile} />
           {/* <Route path='/active/:id' component={ChatBox} /> */}
         </Switch>
       </BrowserRouter>

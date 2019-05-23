@@ -5,7 +5,8 @@
 @import 'dashboard';
 @import 'logout';
 @import 'chatform';
-
+@import 'profile';
+@import 'profileLink';
 
 body {
   color: rgb(85, 81, 81);
@@ -201,3 +202,5 @@ div#showcase {
     visibility: hidden;
   }
 }
+
+
