@@ -42,7 +42,6 @@ class Chats extends Component {
                 <Redirect to="/signin" />
               )
             }
-            return console.log(error)
           }
 
           let renderChat
