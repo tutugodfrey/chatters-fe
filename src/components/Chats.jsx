@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Query, Mutation } from 'react-apollo'
+import { Query, Mutation, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Redirect, Link } from 'react-router-dom'
 
@@ -26,7 +26,34 @@ const ACTIVE_CHAT = gql`
     activeChat(id: $id) @client
   }
 `
+
 class Chats extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      chats: [],
+    }
+  }
+
+  deleteChat(event) {
+    const chatId = event.target.id;
+    this.props.client.mutate({
+      mutation: gql`
+        mutation deleteChat($chatId: ID!) {
+          deleteChat(chatId: $chatId)
+        }
+      `,
+      variables: {
+        chatId
+      }
+    });
+    this.state.chats.map((chat, index) => {
+      if (chat.id === event.target.id) {
+        return this.state.chats.splice(index, 1)
+      }
+    });
+  }
+
   render() {
     return (
       <Query query={GET_CHATS}>
@@ -47,13 +74,15 @@ class Chats extends Component {
           let renderChat
           if (data) {
             const { chats } = data
-            renderChat = chats.map((chat, b)=> {
+            this.state.chats = chats;
+            renderChat = this.state.chats.map((chat, b)=> {
               return (
-                <Mutation mutation={ACTIVE_CHAT} variables={{ id: chat.id }}>
+                <Mutation mutation={ACTIVE_CHAT} variables={{ id: chat.id }} key={chat.id}>
                   { activeChat => {
                     return (
-                      <div class="chats-div">
-                        <Link className="chat-btn" key={chat.id} id={chat.id} onClick={activeChat}>{chat.title}</Link>
+                      <div className="chats-div" key={chat.id}>
+                        <button className="chat-btn" id={chat.id} onClick={activeChat}>{chat.title}</button>
+                        <div><button type="button" id={chat.id} onClick={this.deleteChat.bind(this)}>delete</button></div>
                       </div>
                     )
                   }}
@@ -75,4 +104,4 @@ class Chats extends Component {
   }
 }
 
-export default Chats
+export default withApollo(Chats);

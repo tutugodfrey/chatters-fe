@@ -57,7 +57,7 @@ class ChatBox extends Component {
           let renderMessages = '' 
           renderMessages = chatMessages.map(message => {
             const date = formatDate(message.createdAt)
-            const messages = <div class="message-box">
+            const messages = <div key={message.id} className="message-box">
               <div>{message.body}</div>
               {/* show chat tie */}
               <div className="messages"><span>{date.hour}:{date.minutes}:{date.seconds}</span></div>

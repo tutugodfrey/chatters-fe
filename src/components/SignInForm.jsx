@@ -17,16 +17,17 @@ const SignInForm = (props) => {
               <p className="text-white">An error has occured</p>
             </div>
           )
-        } else if (data) {
+        }
+        if (data) {
+          const { cache } = props.client;
           const { token } = data.signIn
           localStorage.setItem('token', token);
-          const { cache } = props.client;
 
           // save user data to local cache
-          cache.writeData({ data: { user: data.signIn} })
+          cache.writeData({ data: { user: data.signIn} });
           return <Redirect to="/dashboard"/>
-        } else {
-          return (
+        } 
+        return (
           <div className="form-container">
             <div>
               <h3>Sign In</h3>
@@ -75,8 +76,7 @@ const SignInForm = (props) => {
               </div>
             </div>
           </div>
-          )
-        }
+        )
       }}
     </Mutation>
   )

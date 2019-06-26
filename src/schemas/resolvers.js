@@ -46,7 +46,7 @@ export const resolvers = {
           }
         }
       `
-      const chat = cache.readFragment({ fragment, id: chatId })
+      const chat = cache.readFragment({ fragment, id: chatId });
       return cache.writeData({ data: { activeChat: chat }})
     },
   }

@@ -11,16 +11,17 @@ import ProfileLink from './profileLink.jsx'
 
 const IS_LOGGED_IN = gql`
   query isLoggedIn {
-    isLoggedIn @client
+    isLoggedIn @client(always: true)
   }
 `
 class Dashboard extends Component {
   render() {
     return (
       <div className="container">
-        <Query query={IS_LOGGED_IN} fetchPolicy="no-cache">
+        <Query query={IS_LOGGED_IN} >
           {(props)  => {
             const { data } = props;
+            console.log(data, 'Data')
             if (data.isLoggedIn === false) return <Redirect to="/signin" />
             return (
               <div>

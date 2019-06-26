@@ -46,13 +46,13 @@ const App = () => {
     )
 }
 
-const setupAndRender = async () => {
-  persistCache({
-    cache,
-    storage: window.localStorage
-  })
+// const setupAndRender = async () => {
+//   persistCache({
+//     cache,
+//     storage: window.localStorage
+//   })
   ReactDom.render(<App />, document.getElementById('app'))
-}
+// }
 
-setupAndRender()
+// setupAndRender()
 
