@@ -58,7 +58,7 @@ const Profile = (props) => {
                   </div>
                 </div>
                 <div id="edit-profile-div">
-                  <Link id="edit-profile-link" width="100px" onClick={(event) => {
+                  <button id="edit-profile-link" width="100px" onClick={(event) => {
                     event.preventDefault()
                     const updateProfileComp = document.getElementById('update-profile-component')
                     const profileComp = document.getElementById('profile-comp')
@@ -66,7 +66,7 @@ const Profile = (props) => {
                     profileComp.classList.replace('reveal', 'hidden')
                   }}>
                     Edit
-                  </Link>
+                  </button>
               </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ const Profile = (props) => {
                           ref={node => name = node}
                         />
                       </div>
-                      <div class="form-group">
+                      <div className="form-group">
                         <label>Username</label>
                         <input
                           type="text"
@@ -117,7 +117,7 @@ const Profile = (props) => {
                           ref={node => username = node}
                         />
                       </div>
-                      <div class="form-group">
+                      <div className="form-group">
                         <input type="submit" value="Update" />
                       </div>
                     </form>

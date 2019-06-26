@@ -53,7 +53,7 @@ const People = () => {
         let usersDiv;
         if (users) {
        usersDiv =  users.map(user => {
-          return <StartChat user={user} startChat={START_CHAT} />
+          return <StartChat key={user.id} user={user} startChat={START_CHAT} />
         })
         }
         return (

@@ -17,7 +17,7 @@ const LogOut = withRouter((props) => {
     return (
       <div>
         <button id="logout-btn" onClick={(event) => logOut(event, props)}>
-          Log out
+          Log Out
         </button>
       </div>
     )

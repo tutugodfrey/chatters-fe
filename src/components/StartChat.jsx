@@ -15,7 +15,7 @@ const StartChat = (props) => {
               name.value = "";
               }}>
               <div>
-                <input ref={node => (name = node)} id={user.id} value={user.name}/>
+                <input ref={node => (name = node)} id={user.id} defaultValue={user.name}/>
                 <button type="submit">starts chat</button>
               </div>
             </form>

@@ -8,9 +8,9 @@ const profileLink = (event, props) => {
 const ProfileLink = withRouter((props) => {
     return (
       <div id="profile-link-div">
-        <Link id="profile-link" onClick={(event) => profileLink(event, props)}>
+        <button id="profile-link" onClick={(event) => profileLink(event, props)}>
           Profile
-        </Link>
+        </button>
       </div>
     )
 })
