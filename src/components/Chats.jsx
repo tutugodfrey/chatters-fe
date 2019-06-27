@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Query, Mutation, withApollo } from 'react-apollo'
 import gql from 'graphql-tag'
-import { Redirect, Link } from 'react-router-dom'
 
 const GET_CHATS = gql`
   query chats {
@@ -58,19 +57,8 @@ class Chats extends Component {
     return (
       <Query query={GET_CHATS}>
         {(props) => {
-          const { loading, error, data, client } = props
+          const { loading, data, client } = props
           if (loading) return <div>Loading</div>
-          if (error) {
-            if (error.message === 'GraphQL error: jwt expired') {
-              const cache = client.cache;
-              cache.writeData({ data: { isLoggedIn: false }})
-              localStorage.removeItem('token')
-              return (
-                <Redirect to="/signin" />
-              )
-            }
-          }
-
           let renderChat
           if (data) {
             const { chats } = data

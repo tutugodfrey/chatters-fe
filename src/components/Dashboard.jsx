@@ -21,7 +21,6 @@ class Dashboard extends Component {
         <Query query={IS_LOGGED_IN} >
           {(props)  => {
             const { data } = props;
-            console.log(data, 'Data')
             if (data.isLoggedIn === false) return <Redirect to="/signin" />
             return (
               <div>
@@ -32,6 +31,7 @@ class Dashboard extends Component {
                 <div id="dashboard">
                   <div className="p-x" id='chats'>
                     <Chats />
+                    oo
                   </div>
                   <div className="p-x" id="chat-box">
                     <ChatBox />

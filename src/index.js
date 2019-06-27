@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import  { ApolloClient,  ApolloLink, InMemoryCache, HttpLink } from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
+import { from } from 'apollo-link'
+import { onError } from 'apollo-link-error'
+import { logOut } from './helpers/requestHelpers'
 import { persistCache } from 'apollo-cache-persist'
 
 import Routes from './routes/Routes.jsx'
@@ -24,6 +27,18 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation)
 })
 
+const logOutLink = onError(({ response }) => {
+  const { message }  = response.errors[0]
+  console.log({ authError: message })
+  if (
+    message === 'jwt expired'
+    || message === 'invalid signature'
+    || message === 'invalid token'
+  ) {
+    logOut(cache)
+  }
+})
+
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem('token'),
@@ -32,7 +47,11 @@ cache.writeData({
 })
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: from([
+    authLink,
+    logOutLink,
+    httpLink
+  ]),
   cache,
   typeDefs,
   resolvers,
