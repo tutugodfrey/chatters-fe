@@ -1,3 +1,4 @@
+
 import React, { Component} from 'react'
 // import People from './People.jsx'
 import Chats from './Chats.jsx'
@@ -17,11 +18,11 @@ const IS_LOGGED_IN = gql`
 class Dashboard extends Component {
   render() {
     return (
-      <div className="container">
-        <Query query={IS_LOGGED_IN} >
-          {(props)  => {
+      <div className="container" >
+        <Query query={IS_LOGGED_IN}>
+          {(props) => {
             const { data } = props;
-            if (data.isLoggedIn === false) return <Redirect to="/signin" />
+            if (!data.isLoggedIn) return <Redirect to="/signin" />
             return (
               <div>
                 <div id={'dashboard-header'}>
@@ -31,7 +32,6 @@ class Dashboard extends Component {
                 <div id="dashboard">
                   <div className="p-x" id='chats'>
                     <Chats />
-                    oo
                   </div>
                   <div className="p-x" id="chat-box">
                     <ChatBox />
