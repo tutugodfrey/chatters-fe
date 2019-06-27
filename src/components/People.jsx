@@ -37,24 +37,14 @@ const People = () => {
   return (
     <Query query={people}>{
       (props) => {
-        const {loading, error, data} = props
-        if (error) {
-          if (error.message === 'GraphQL error: jwt expired') {
-            const cache = new InMemoryCache();
-            cache.writeData({ data: { isLoggedIn: false }})
-            localStorage.removeItem('token')
-            return (
-              <Redirect to="/signin" />
-            )
-          }
-          return `<p>An error has occurred</p> ${error.message}`
-        }
+        const {loading, data} = props
         const users = data.users
         let usersDiv;
+        if (loading)return <div>Loading</div>
         if (users) {
-       usersDiv =  users.map(user => {
-          return <StartChat key={user.id} user={user} startChat={START_CHAT} />
-        })
+          usersDiv =  users.map(user => {
+            return <StartChat key={user.id} user={user} startChat={START_CHAT} />
+          })
         }
         return (
           <div>
