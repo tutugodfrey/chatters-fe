@@ -11,6 +11,7 @@ const SignInForm = (props) => {
     <Mutation mutation={signIn}>
       { (signIn, props) => {
         const { error, loading, data } = props
+        if (loading) return <div>Loading...</div>
         if (error) {
           return (
             <div>
@@ -24,7 +25,10 @@ const SignInForm = (props) => {
           localStorage.setItem('token', token);
 
           // save user data to local cache
-          cache.writeData({ data: { user: data.signIn} });
+          cache.writeData({ data: {
+            user: data.signIn,
+            isLoggedIn: !!localStorage.getItem('token')
+          } });
           return <Redirect to="/dashboard"/>
         } 
         return (
