@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import { Mutation, ApolloConsumer } from 'react-apollo';
 import  { InMemoryCache } from 'apollo-boost'
 import { Redirect } from 'react-router-dom';
-import StartChat from './StartChat.jsx';
+import StartChat from './StartChat';
 
 
 const people = gql`

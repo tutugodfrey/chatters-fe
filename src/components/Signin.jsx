@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import gql from 'graphql-tag'
-import SignInForm from './SignInForm.jsx'
+import SignInForm from './SignInForm'
 
 const SIGN_IN = gql`
   mutation signIn($email: String!, $password: String!){

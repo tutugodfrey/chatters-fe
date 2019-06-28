@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Signup from '../components/Signup.jsx'
-import Signin from '../components/Signin.jsx'
-import Home from '../components/Home.jsx'
-import Messages from '../components/Messages.jsx'
-import Chats from '../components/Chats.jsx'
-import Dashboard from '../components/Dashboard.jsx'
-import Profile from '../components/profile.jsx'
-import ChatBox from '../components/ChatBox.jsx'
+import Signup from '../components/Signup'
+import Signin from '../components/Signin'
+import Home from '../components/Home'
+import Messages from '../components/Messages'
+import Chats from '../components/Chats'
+import Dashboard from '../components/Dashboard'
+import Profile from '../components/profile'
+import ChatBox from '../components/ChatBox'
 
 export default () => {
   return (
