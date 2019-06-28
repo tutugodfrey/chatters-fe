@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import People from './People.jsx'
+import People from './People'
 
 const StartChat = (props) => {
   return (

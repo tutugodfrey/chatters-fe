@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import gql from 'graphql-tag'
-import SignUpForm from './SignUpForm.jsx';
+import SignUpForm from './SignUpForm';
 
 
 const SIGN_UP = gql`
