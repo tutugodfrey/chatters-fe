@@ -17,7 +17,7 @@ const GET_CHATS = gql`
         email,
         username,
       }
-    }
+    } 
   }
 `
 const ACTIVE_CHAT = gql`
@@ -55,13 +55,25 @@ class Chats extends Component {
 
   render() {
     return (
-      <Query query={GET_CHATS}>
+      <Query query={GET_CHATS} fetchPolicy="network-only">
         {(props) => {
           const { loading, data, client } = props
+          let chats;
+          if (data && !data.chats) {
+             const data = client.cache.readQuery({ query: gql`
+            query getChats {
+              chats {
+                id,
+                title,
+              }
+            }`})
+
+            chats = data.chats
+          }
           if (loading) return <div>Loading</div>
           let renderChat
-          if (data) {
-            const { chats } = data
+          chats = data.chats || chats
+          if (chats) {
             this.state.chats = chats;
             renderChat = this.state.chats.map((chat, b)=> {
               return (

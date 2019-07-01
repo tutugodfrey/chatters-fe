@@ -42,7 +42,8 @@ const logOutLink = onError(({ response }) => {
 cache.writeData({
   data: {
     isLoggedIn: !!localStorage.getItem('token'),
-    activeChat: { name: ''}
+    activeChat: { name: ''},
+    chats: [],
   }
 })
 

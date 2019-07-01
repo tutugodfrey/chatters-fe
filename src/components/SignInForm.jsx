@@ -5,21 +5,29 @@ import { Link, Redirect } from 'react-router-dom'
 const SignInForm = (props) => {
   let email
   let password
-  const { signIn } = props
+  const { signIn, typing, handleChange, doneTyping } = props
 
   return (
     <Mutation mutation={signIn}>
       { (signIn, props) => {
         const { error, loading, data } = props
+        let loginError = '';
+        const errorMsg = 'GraphQL error: Incorrect email or password. Please try again.'
+        const message = 'Incorrect email or password. Please check email and password.'
         if (loading) return <div>Loading...</div>
         if (error) {
-          return (
-            <div>
-              <p className="text-white">An error has occured</p>
-            </div>
-          )
+          if (error.message === errorMsg) {
+            loginError = message
+          } else {
+            return (
+              <div>
+                <p className="text-white">An error has occured</p>
+              </div>
+            )
+          }
         }
         if (data) {
+          loginError = ''
           const { cache } = props.client;
           const { token } = data.signIn
           localStorage.setItem('token', token);
@@ -37,13 +45,14 @@ const SignInForm = (props) => {
               <h3>Sign In</h3>
             </div>
             <div id="signin-form">
+              <p>{typing ? '' : loginError}</p>
               <form onSubmit={ e => {
                 e.preventDefault()
                 signIn({ variables: { 
                   email: email.value,
                   password: password.value,
                 } });
-
+                doneTyping()
                 email.value = "";
                 password.value = "";
               }}>
@@ -52,6 +61,7 @@ const SignInForm = (props) => {
                   <input
                     type='text'
                     name='email'
+                    onChange={handleChange}
                     className="form-control"
                     placeholder='email'
                     ref={node => email = node}
@@ -62,6 +72,7 @@ const SignInForm = (props) => {
                   <input
                     type='password'
                     name='password'
+                    onChange={handleChange}
                     className="form-control"
                     placeholder='password'
                     ref={node => password = node}
