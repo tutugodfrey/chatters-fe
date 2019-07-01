@@ -37,7 +37,7 @@ const People = () => {
   return (
     <Query query={people}>{
       (props) => {
-        const {loading, data} = props
+        const {loading, data, client} = props
         const users = data.users
         let usersDiv;
         if (loading)return <div>Loading</div>

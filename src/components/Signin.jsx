@@ -25,13 +25,36 @@ const SIGN_IN = gql`
   }
 `
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this)
+    this.doneTyping = this.doneTyping.bind(this)
+    this.state = {
+      typing: false
+    }
+  }
+  handleChange(event) {
+    this.setState({
+      typing: true
+    })
+  }
+  doneTyping() {
+    this.setState({
+      typing: false
+    })
+  }
   render() {
     return (
       <div className="container" id="signin-page">
         <div className="go-back-home">
           <Link to="/">Back</Link>
         </div>
-        <SignInForm signIn={ SIGN_IN } />
+        <SignInForm
+          signIn={ SIGN_IN }
+          handleChange={this.handleChange}
+          doneTyping={this.doneTyping}
+          typing={this.state.typing}
+        />
       </div>
     )
   }
